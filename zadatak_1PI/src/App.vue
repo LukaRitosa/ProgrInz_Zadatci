@@ -8,7 +8,8 @@
         bg-gradient-to-br 
         from-emerald-700 
         to-indigo-700 
-        text-teal-100"
+        text-teal-100
+        "
     >
 
         <div class="
@@ -21,7 +22,7 @@
             Moji omiljeni filmovi:
         </div>
         
-        <div class="items-center">
+        <div class="flex gap-20 justify-center">
             <img src="https://d135u4jtzauizi.cloudfront.net/GTM_KEY_0097_1SHEET_F04.jpg"
             class="
                 w-[320px]
