@@ -41,13 +41,28 @@ function dohvatiCijenu(naziv){
     else return 0
 }
 
+function sveukupnaCijena() {
+    return korisnik.kosarica.reduce((ukupno, proizvod) => {
+        const cijena = dohvatiCijenu(proizvod.naziv)
+        return ukupno + (cijena * proizvod.količina)}, 0).toFixed(2) 
+}
 
+function najskupljaStavka() {
+  return korisnik.kosarica.reduce((najskuplja, proizvod) => {
+    const ukupnaCijena = dohvatiCijenu(proizvod.naziv) * proizvod.količina;
+    if (ukupnaCijena > dohvatiCijenu(najskuplja.naziv) * najskuplja.količina) {
+      return proizvod;
+    } else {
+      return najskuplja;
+    }
+  }).naziv;  
+}
 
 </script>
 
 <template>
 
-    <div :class="korisnik.jeAdmin ? 'text-blue-800' : 'text-black'" class="bg-blue-100 border border-gray-400 rounded p-4">
+    <div :class="korisnik.jeAdmin ? 'text-blue-800' : 'text-black'" class="bg-blue-100 border border-gray-400 rounded p-4 w-150">
         <div class="text-xl">
             <b>Korisnički podatci </b>
             <hr class="">
@@ -56,12 +71,12 @@ function dohvatiCijenu(naziv){
         <div><b>Adresa:</b> {{ korisnik.osobni_podaci.adresa.ulica }} {{ korisnik.osobni_podaci.adresa.broj }}, {{ korisnik.osobni_podaci.adresa.grad }}</div>
         <div><b>Telefon:</b> {{ korisnik.osobni_podaci.broj_telefona }}</div>
     </div>
-
+    
     <div>
-        <div class=" bg-blue-100 border border-gray-400 rounded p-4">
+        <div class=" bg-blue-100 border border-gray-400 rounded p-4 mt-3 w-150">
             <b class="text-xl">Košarica</b>
-            <hr>
-            <div class="flex bg-white border border-gray-400 rounded p-4">
+            <hr class="my-2">
+            <div class="flex border-gray-400 rounded p-4 my-3" :class="najskupljaStavka()=='Jabuka' ? 'bg-red-400 text-white': 'bg-white border'" >
                 <img :src="like['Jabuka']" class="h-20 ">
                 <div class="flex-columns">
                     <div>
@@ -76,11 +91,11 @@ function dohvatiCijenu(naziv){
                 </div>
 
             </div>
-            <div class="flex bg-white border border-gray-400 rounded p-4">
+            <div class="flex border-gray-400 rounded p-4 my-3" :class="najskupljaStavka()=='Mrkva' ? 'bg-red-400 text-white': 'bg-white border'" >
                 <img :src="like['Mrkva']" class="h-20 ">
                 <div class="flex-columns">
                     <div>
-                        <b>Mrkva</b>>
+                        <b>Mrkva</b>
                     </div>
                     <div>
                         Cijena: {{ dohvatiCijenu("Mrkva") }}€ | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Mrkva').količina }} kom
@@ -91,11 +106,11 @@ function dohvatiCijenu(naziv){
                 </div>
 
             </div>
-            <div class="flex bg-white border border-gray-400 rounded p-4">
+            <div class="flex border-gray-400 rounded p-4 my-3" :class="najskupljaStavka()=='Kruh' ? 'bg-red-400 text-white': 'bg-white border'" >
                 <img :src="like['Kruh']" class="h-20 ">
                 <div class="flex-columns">
                     <div>
-                        <b>Kruh</b>>
+                        <b>Kruh</b>
                     </div>
                     <div>
                         Cijena: {{ dohvatiCijenu("Kruh") }}€ | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Kruh').količina }} kom
@@ -106,7 +121,7 @@ function dohvatiCijenu(naziv){
                 </div>
 
             </div>
-            <div class="flex bg-white border border-gray-400 rounded p-4">
+            <div class="flex border-gray-400 rounded p-4 my-3" :class="najskupljaStavka()=='Sir' ? 'bg-red-400 text-white': 'bg-white border'" >
                 <img :src="like['Sir']" class="h-20 ">
                 <div class="flex-columns">
                     <div>
@@ -122,7 +137,8 @@ function dohvatiCijenu(naziv){
 
             </div>    
             
-            <b>Ukupna cijena:</b>
+            <b>Ukupna cijena:</b> {{sveukupnaCijena()}}€
+
         </div>         
     </div>
 
