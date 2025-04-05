@@ -50,7 +50,7 @@ function dohvatiCijenu(naziv){
     <div :class="korisnik.jeAdmin ? 'text-blue-800' : 'text-black'" class="bg-blue-100 border border-gray-400 rounded p-4">
         <div class="text-xl">
             <b>Korisnički podatci </b>
-            <hr>
+            <hr class="">
         </div>
         <div><b>Ime:</b> {{ korisnik.osobni_podaci.ime }} {{ korisnik.osobni_podaci.prezime }}</div>
         <div><b>Adresa:</b> {{ korisnik.osobni_podaci.adresa.ulica }} {{ korisnik.osobni_podaci.adresa.broj }}, {{ korisnik.osobni_podaci.adresa.grad }}</div>
@@ -58,24 +58,71 @@ function dohvatiCijenu(naziv){
     </div>
 
     <div>
-        <div class="text-xl bg-blue-100 border border-gray-400 rounded p-4">
-            <b>Košarica</b>
+        <div class=" bg-blue-100 border border-gray-400 rounded p-4">
+            <b class="text-xl">Košarica</b>
             <hr>
-            <div class="flex bg-white">
+            <div class="flex bg-white border border-gray-400 rounded p-4">
                 <img :src="like['Jabuka']" class="h-20 ">
                 <div class="flex-columns">
                     <div>
-                        Jabuka
+                        <b>Jabuka</b>
                     </div>
                     <div>
-                        Cijena: {{ dohvatiCijenu("Jabuka") }} € | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Jabuka').količina }}
+                        Cijena: {{ dohvatiCijenu("Jabuka") }}€ | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Jabuka').količina }} kom
                     </div>     
                     <div>
-                        Ukupno: {{ (dohvatiCijenu("Jabuka"))* (korisnik.kosarica.find(el => el.naziv == 'Jabuka').količina) }} €
+                        Ukupno: {{ ((dohvatiCijenu("Jabuka"))* (korisnik.kosarica.find(el => el.naziv == 'Jabuka').količina)).toFixed(2) }}€
                     </div>   
                 </div>
 
             </div>
+            <div class="flex bg-white border border-gray-400 rounded p-4">
+                <img :src="like['Mrkva']" class="h-20 ">
+                <div class="flex-columns">
+                    <div>
+                        <b>Mrkva</b>>
+                    </div>
+                    <div>
+                        Cijena: {{ dohvatiCijenu("Mrkva") }}€ | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Mrkva').količina }} kom
+                    </div>     
+                    <div>
+                        Ukupno: {{ ((dohvatiCijenu("Mrkva"))* (korisnik.kosarica.find(el => el.naziv == 'Mrkva').količina)).toFixed(2) }}€
+                    </div>   
+                </div>
+
+            </div>
+            <div class="flex bg-white border border-gray-400 rounded p-4">
+                <img :src="like['Kruh']" class="h-20 ">
+                <div class="flex-columns">
+                    <div>
+                        <b>Kruh</b>>
+                    </div>
+                    <div>
+                        Cijena: {{ dohvatiCijenu("Kruh") }}€ | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Kruh').količina }} kom
+                    </div>     
+                    <div>
+                        Ukupno: {{ ((dohvatiCijenu("Kruh"))* (korisnik.kosarica.find(el => el.naziv == 'Kruh').količina)).toFixed(2) }}€
+                    </div>   
+                </div>
+
+            </div>
+            <div class="flex bg-white border border-gray-400 rounded p-4">
+                <img :src="like['Sir']" class="h-20 ">
+                <div class="flex-columns">
+                    <div>
+                        <b>Sir</b>
+                    </div>
+                    <div>
+                        Cijena: {{ dohvatiCijenu("Sir") }}€ | Količina:  {{ korisnik.kosarica.find(el => el.naziv == 'Sir').količina }} kom
+                    </div>     
+                    <div>
+                        Ukupno: {{ ((dohvatiCijenu("Sir"))* (korisnik.kosarica.find(el => el.naziv == 'Sir').količina)).toFixed(2) }}€
+                    </div>   
+                </div>
+
+            </div>    
+            
+            <b>Ukupna cijena:</b>
         </div>         
     </div>
 
