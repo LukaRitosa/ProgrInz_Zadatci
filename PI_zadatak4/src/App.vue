@@ -19,8 +19,8 @@
     
     const activeLink = ref("POČETNA");
 
-    function updateActiveLink(newLink) {
-      activeLink.value = newLink
+    function promjeniLink( noviLink) {
+      activeLink.value = noviLink
     }
 
 </script>
@@ -40,9 +40,9 @@
 
 
             <Navbar
-              :links="links"
+              :linkovi="links"
               :activeLink="activeLink"
-              @updateActiveLink="updateActiveLink"
+              @promjeniLink="promjeniLink"
             />
 
 

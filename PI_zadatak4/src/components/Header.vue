@@ -1,5 +1,6 @@
 <script setup>
-    
+    import Tekst from '@/components/JustifiedTextSection.vue'
+
 </script>
 
 <template>
@@ -8,7 +9,8 @@
         <img src="@/assets/images/baner.jpg" alt="baner"
             class="absolute w-full h-full object-cover rounded-b-lg">
         <p class="z-10 font-extralight text-slate-100 sm:text-5xl text-3xl text-center">
-            Multimedijalni<br>Sustavi
+            <Tekst text=" Multimedijalni"/>
+            <Tekst text="Sustavi"/>
         </p>
     </div>
 
