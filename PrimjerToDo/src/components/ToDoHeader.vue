@@ -3,10 +3,10 @@
 </script>
 
 <template>
-<h1 >
-  To-Do Aplikacija
+  <slot >
+    To-Do Aplikacija
 
-</h1>
+  </slot>
 </template>
 
 <style scoped>
