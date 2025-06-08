@@ -8,7 +8,7 @@
         <!--Zadaci se rješavaju unutar komponenti/pregleda-->
         <!--Za biranje zadataka treba mjenjati true/false-->
         <!--Za biranje routera treba u mapi 'router' u 'index.js' mjenjat default export-->
-        <Zadatak_1 v-if="true"/>
-        <Zadatak_2 v-if="false"/>
+        <Zadatak_1 v-if="false"/>
+        <Zadatak_2 v-if="true"/>
     </div>
 </template>
